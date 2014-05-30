@@ -1,16 +1,21 @@
 class Character{
    private PImage charIcon;
-   private double power,speed;
-   private float x,y;
-   public String name;
-   private boolean turnLeft,turnRight,turnUp,turnDown,moving;
+   private double power,speed,angle;
+   private float x,y;//floats because they dont take doubles for the paitning for images at x,y.
+   private String name;
+   private boolean moving;
    
    public Character(String name){
       this.name = name;
       charIcon = loadImage("link.png");
       x = y = 200.0f;
-      turnLeft=turnRight=turnUp=turnDown=moving=false;
+      moving = false;
+      angle = 0;
    }
+   
+   /*
+    getter setters 
+  */
    
    public float getX(){
       return x; 
@@ -20,9 +25,43 @@ class Character{
       return y; 
    }
    
-   public PImage getImage(){
-      return charIcon;
+   public void setMoving(boolean moving){
+       this.moving = moving;
    }
+   
+   public boolean getMoving(){
+       return moving; 
+   }
+   
+   public void setAngleTurned(double angle){
+       this.angle = angle;
+   }
+   public PImage getImage(){
+       return charIcon;
+   }
+   
+   public void move(){
+      switch((int)angle){
+         case 0:
+           y = y-5;
+           break;
+         case 90:
+           x = x+5;
+           break;
+         case 180:
+           y = y+5;
+           break;
+         case 270:
+           x = x-5;
+           break;
+      }
+   }
+  /*
+   0,0 - - - -
+   |          |  ASCII representation of x,y coordinates
+   |          |
+   |__________800,600
+   */
    
    
    

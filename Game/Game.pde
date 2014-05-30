@@ -1,31 +1,37 @@
-boolean turnUp,turnDown,turnLeft,turnRight,moving;//move to character class and check there.
+//fillinmaplater
 PImage map;
-Character test;
+Character hero;
 
     void setup(){
       size(800,600);
-      test = new Character("Character");
+      hero = new Character("Character");
     }
     
     void draw(){
-      //Character test = new Character("Character");
        background(0); 
-      image(test.getImage(),test.getX(),test.getY());// why doesn't test see it?
+       image(hero.getImage(),hero.getX(),hero.getY());//coordinates are floats.
+       if(hero.getMoving()){
+       hero.move();
+       }
     }
     
-    void keyPressed(){//finishkeypress
+    void keyPressed(){
       switch(key){
            case 's':
-               turnDown = moving = true;
+               hero.setAngleTurned(180);
+               hero.setMoving(true);
                break;
            case 'w':
-               turnUp = moving = true;
+               hero.setAngleTurned(0);
+               hero.setMoving(true);
                break;
            case 'a':
-               turnLeft = moving = true;
+               hero.setAngleTurned(270);
+               hero.setMoving(true);
                break;
            case 'd':
-               turnRight = moving = true;
+               hero.setAngleTurned(90);
+               hero.setMoving(true);   
                break;            
       }
     }
@@ -33,39 +39,20 @@ Character test;
       void keyReleased(){
          switch(key){
             case 's':
-                moving = false;
+                hero.setMoving(false);
                 break;
             case 'w':
-                moving = false;
+                hero.setMoving(false);
                 break;
             case 'a':
-                moving = false;
+                hero.setMoving(false);
                 break;
             case 'd':
-                moving = false;
+                hero.setMoving(false);               
                 break;
-         } 
-        
+         }  
       }
-      /*
-         if(key == 'S'){
-           turnDown = moving = true;
-         }
-         if(key == 'W'){
-           turnUp = moving = true;
-         }
-         if(key == 'A'){
-            turnLeft = moving = true; 
-         }
-         if(key == 'D'){
-            turnRight = moving = true; 
-         } 
-    */     
-
-    
-    void keyReleased(){
-        
-    }
-    /*
-    void keypressed/keyreleased
-    */
+      
+      
+      
+      
