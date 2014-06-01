@@ -9,7 +9,7 @@ Character hero;
     
     void draw(){
        background(0); 
-       image(hero.getImage(),hero.getX(),hero.getY());//coordinates are floats.
+       image(cleanSprite(hero),hero.getX(),hero.getY());//coordinates are floats.
        if(hero.getMoving()){
        hero.move();
        }

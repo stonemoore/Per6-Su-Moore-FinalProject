@@ -13,10 +13,6 @@ class Character{
       angle = 0;
    }
    
-   /*
-    getter setters 
-  */
-   
    public float getX(){
       return x; 
    }
@@ -36,6 +32,7 @@ class Character{
    public void setAngleTurned(double angle){
        this.angle = angle;
    }
+   
    public PImage getImage(){
        return charIcon;
    }
@@ -56,13 +53,14 @@ class Character{
            break;
       }
    }
+
+}
+   
+   
   /*
    0,0 - - - -
-   |          |  ASCII representation of x,y coordinates
+   |          |ASCII representation of x,y coordinates
    |          |
    |__________800,600
    */
-   
-   
-   
-}
+
