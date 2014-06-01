@@ -16,42 +16,38 @@ Character hero;
     }
     
     void keyPressed(){
-      switch(key){
-           case 's':
+           if (key == CODED && keyCode == SHIFT){
+               hero.toggleStrafing();
+           }
+           if (key == 's'){
                hero.setAngleTurned(180);
                hero.setMoving(true);
-               break;
-           case 'w':
+           }
+           if (key == 'w'){
                hero.setAngleTurned(0);
                hero.setMoving(true);
-               break;
-           case 'a':
+           }
+           if (key == 'a'){
                hero.setAngleTurned(270);
                hero.setMoving(true);
-               break;
-           case 'd':
+           }
+           if (key == 'd'){
                hero.setAngleTurned(90);
-               hero.setMoving(true);   
-               break;            
+               hero.setMoving(true);      
+           }      
       }
-    }
       
       void keyReleased(){
-         switch(key){
-            case 's':
+              if (key == 's')
                 hero.setMoving(false);
-                break;
-            case 'w':
+              if (key == 'w')
                 hero.setMoving(false);
-                break;
-            case 'a':
+              if (key == 'a')
                 hero.setMoving(false);
-                break;
-            case 'd':
-                hero.setMoving(false);               
-                break;
-         }  
-      }
+              if (key == 'd')
+                hero.setMoving(false);                      
+      }  
+
       
       
       
