@@ -11,7 +11,7 @@ PImage cleanSprite(Character hero){//removes white space for black space
       }else{
       output.pixels[location] = input.pixels[location]; 
       }
-    }  
+    }
   }
   output.updatePixels();
   return output;
