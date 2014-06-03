@@ -16,37 +16,54 @@ Character hero;
     }
     
     void keyPressed(){
-           if (key == CODED && keyCode == SHIFT){
-               hero.toggleStrafing();
-           }
-           if (key == 's'){
+       switch(key){
+           case 's':
                hero.setAngleTurned(180);
                hero.setMoving(true);
-           }
-           if (key == 'w'){
+               break;
+           case 'w':
                hero.setAngleTurned(0);
                hero.setMoving(true);
-           }
-           if (key == 'a'){
+               break;
+           case 'a':
                hero.setAngleTurned(270);
                hero.setMoving(true);
-           }
-           if (key == 'd'){
+               break;
+           case 'd':
                hero.setAngleTurned(90);
-               hero.setMoving(true);      
-           }      
+               hero.setMoving(true);   
+               break;
+          }      
       }
       
       void keyReleased(){
-              if (key == 's')
+       switch(key){
+            case 's':
                 hero.setMoving(false);
-              if (key == 'w')
+                break;
+            case 'w':
                 hero.setMoving(false);
-              if (key == 'a')
+                break;
+            case 'a':
                 hero.setMoving(false);
-              if (key == 'd')
-                hero.setMoving(false);                      
-      }  
+                break;
+            case 'd':
+                hero.setMoving(false);               
+                break;
+         }                     
+      }
+    
+      /*void mousePressed() {
+        if(hero.getAngle() == 0.0)
+          Bullet b = new Bullet(0, hero.getX(), hero.getY());
+        if(hero.getAngle() == 90.0)
+          Bullet b = new Bullet(90, hero.getX(), hero.getY());
+        if(hero.getAngle() == 180.0)
+          Bullet b = new Bullet(180, hero.getX(), hero.getY());
+        if(hero.getAngle() == 270.0)
+          Bullet b = new Bullet(270, hero.getX(), hero.getY());
+      }*/
+ 
 
       
       

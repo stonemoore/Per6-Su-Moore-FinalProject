@@ -22,6 +22,10 @@ class Character{
       return y; 
    }
    
+   public double getAngle(){
+     return angle; 
+   }
+   
    public void setMoving(boolean moving){
        this.moving = moving;
    }
@@ -47,25 +51,21 @@ class Character{
       int length = 600;
       switch((int)angle){
          case 0:
-           if(!strafing)
              charIcon = loadImage("arrow4.png");
            if(y>0)
              y = y-speed;
            break;
          case 90:
-           if(!strafing)
              charIcon = loadImage("arrow.png");
            if(x<width-100)//-100 accounts for image size
              x = x+speed;
            break;
          case 180:
-           if(!strafing)
              charIcon = loadImage("arrow2.png");
            if(y<length-100)
              y = y+speed;
            break;
          case 270:
-           if(!strafing)
              charIcon = loadImage("arrow3.png");
            if(x>0)
              x = x-speed;
