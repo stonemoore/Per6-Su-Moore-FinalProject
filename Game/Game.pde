@@ -1,10 +1,12 @@
 //fillinmaplater
 PImage map;
 Character hero;
+Bullet test;
 
     void setup(){
       size(800,600);
       hero = new Character("Character");
+      Bullet test = new Bullet(0,400,300);
     }
     
     void draw(){

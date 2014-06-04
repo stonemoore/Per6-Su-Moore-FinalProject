@@ -3,7 +3,7 @@ class Character{
    private double power, angle;
    private float x,y,speed;//floats because they dont take doubles for the paitning for images at x,y.
    private String name;
-   private boolean moving,strafing=false;
+   private boolean moving;
    
    public Character(String name){
       this.name = name;
@@ -37,13 +37,13 @@ class Character{
    public void setAngleTurned(double angle){
        this.angle = angle;
    }
-     
-   public void toggleStrafing(){
-       strafing = !strafing; 
-   }
    
    public PImage getImage(){
        return charIcon;
+   }
+   
+   public void setImage(String s){
+       charIcon = loadImage(s);
    }
    
    public void move(){
@@ -51,25 +51,25 @@ class Character{
       int length = 600;
       switch((int)angle){
          case 0:
-             charIcon = loadImage("arrow4.png");
-           if(y>0)
+             setImage("arrow4.png");
+             if(y>0)
              y = y-speed;
-           break;
+             break;
          case 90:
-             charIcon = loadImage("arrow.png");
-           if(x<width-100)//-100 accounts for image size
+             setImage("arrow.png");
+             if(x<width-100)//-100 accounts for image size
              x = x+speed;
-           break;
+             break;
          case 180:
-             charIcon = loadImage("arrow2.png");
-           if(y<length-100)
+             setImage("arrow2.png");
+             if(y<length-100)
              y = y+speed;
-           break;
+             break;
          case 270:
-             charIcon = loadImage("arrow3.png");
-           if(x>0)
+             setImage("arrow3.png");
+             if(x>0)
              x = x-speed;
-           break;
+             break;
       }
    }
 

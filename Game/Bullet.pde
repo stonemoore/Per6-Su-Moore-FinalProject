@@ -2,24 +2,42 @@ public class Bullet{
 
   private PImage bulletIcon;
   private int angle;
-  private float x,y;
+  private float x,y,speed;
  
-  public Bullet(int a, float xa, float ya){
-    angle = a;
-    bulletIcon=loadImage("Bullet.png");
-    x = xa;
-    y = ya;
+  public Bullet(int angle, float x, float y){
+    this.angle = angle;
+    bulletIcon = loadImage("Bullet.png");
+    this.x = x;
+    this.y = y;
   }
   
-  public move(){
-    if (angle == 0)
-        y += 10.0;      
-    if (angle == 90)
-        x += 10.0;    
-    if (angle == 180)
-        y -= 10.0; 
-    if (angle == 270)
-        x -= 10.0;
-     }
+  public PImage getIcon(){
+     return bulletIcon;
+  }
+  
+  public float getX(){
+     return x; 
+  }
+  
+  public float getY(){
+     return y; 
+  }
+  
+  public void move(){
+    switch(angle){
+      case 0:
+        y = y-speed;
+        break;
+      case 90:
+        x = x+speed;
+        break;
+      case 180:
+        y = y+speed;
+        break;
+      case 279:
+        x = x-speed;
+        break;
+    }
    }
+}
 
