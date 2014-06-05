@@ -2,11 +2,14 @@
 PImage map;
 Character hero;
 Bullet test;
+ArrayList<Bullet> bullets;
+
 
     void setup(){
       size(800,600);
       hero = new Character("Character");
-      Bullet test = new Bullet(0,400,300);
+      test = new Bullet(0,400,300);
+      bullets = new ArrayList<Bullet>();
     }
     
     void draw(){
@@ -15,6 +18,13 @@ Bullet test;
        if(hero.getMoving()){
        hero.move();
        }
+       for(Bullet bullet: bullets){
+           image(bullet.getIcon(),bullet.getX(),bullet.getY());
+           bullet.move();
+       }
+       //MOVEMENT###########################
+       
+       
     }
     
     void keyPressed(){
@@ -34,6 +44,9 @@ Bullet test;
            case 'd':
                hero.setAngleTurned(90);
                hero.setMoving(true);   
+               break;
+           case 'z':
+               hero.shoot(bullets);
                break;
           }      
       }

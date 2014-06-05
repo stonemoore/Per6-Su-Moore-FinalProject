@@ -46,6 +46,10 @@ class Character{
        charIcon = loadImage(s);
    }
    
+   public void shoot(ArrayList<Bullet> list){
+       list.add(new Bullet(getAngle(),getX(),getY()));
+   }
+   
    public void move(){
       int width = 800;
       int length = 600;

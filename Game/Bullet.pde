@@ -1,14 +1,14 @@
 public class Bullet{
-
   private PImage bulletIcon;
-  private int angle;
+  private double angle;
   private float x,y,speed;
  
-  public Bullet(int angle, float x, float y){
+  public Bullet(double angle, float x, float y){
     this.angle = angle;
     bulletIcon = loadImage("Bullet.png");
     this.x = x;
     this.y = y;
+    speed = 10;
   }
   
   public PImage getIcon(){
@@ -24,18 +24,18 @@ public class Bullet{
   }
   
   public void move(){
-    switch(angle){
+    switch((int)angle){
       case 0:
-        y = y-speed;
+        y -= speed;
         break;
       case 90:
-        x = x+speed;
+        x += speed;
         break;
       case 180:
-        y = y+speed;
+        y += speed;
         break;
-      case 279:
-        x = x-speed;
+      case 270:
+        x -= speed;
         break;
     }
    }
