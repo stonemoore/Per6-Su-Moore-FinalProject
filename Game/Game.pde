@@ -52,6 +52,7 @@ void keyReleased() {
   switch(key) {
   case 's':
     hero.setMoving(false);
+    hero.setImage("down_idle.png");
     break;
   case 'w':
     hero.setMoving(false);
@@ -59,9 +60,11 @@ void keyReleased() {
     break;
   case 'a':
     hero.setMoving(false);
+    hero.setImage("left_idle.png");
     break;
   case 'd':
-    hero.setMoving(false);               
+    hero.setMoving(false); 
+    hero.setImage("right_idle.png");    
     break;
   }
 }

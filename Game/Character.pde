@@ -14,7 +14,10 @@ public class Character {
     angle = 0;
     speed = 4.0f;
     frameRate(24);
-    up = new Animation("up/up",10);
+    up = new Animation("up/up",18);
+    right = new Animation("right/right",18);
+    down = new Animation("down/down",18);
+    left = new Animation("left/left",18);
   }
 
   public float getX() {
@@ -64,17 +67,20 @@ public class Character {
         y = y-speed;
       break;
     case 90:
-      setImage("arrow.png");
+      setImage("blank.png");
+      right.display(x,y);
       if (x<width-100)//-100 accounts for image size
         x = x+speed;
       break;
     case 180:
-      setImage("arrow2.png");
+      setImage("blank.png");
+      down.display(x,y);
       if (y<length-100)
         y = y+speed;
       break;
     case 270:
-      setImage("arrow3.png");
+      setImage("blank.png");
+      left.display(x,y);
       if (x>0)
         x = x-speed;
       break;
