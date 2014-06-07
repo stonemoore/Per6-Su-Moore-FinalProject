@@ -5,6 +5,7 @@ Bullet test;
 ArrayList<Bullet> bullets;
 
 
+
 void setup() {
   size(800, 600);
   hero = new Character("Character");
@@ -54,6 +55,7 @@ void keyReleased() {
     break;
   case 'w':
     hero.setMoving(false);
+    hero.setImage("up_idle.png");
     break;
   case 'a':
     hero.setMoving(false);

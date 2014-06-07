@@ -1,4 +1,5 @@
 public class Character {
+  private Animation up, down, left, right;
   private PImage charIcon;
   private double power, angle;
   private float x, y, speed;//floats because they dont take doubles for the paitning for images at x,y.
@@ -7,11 +8,13 @@ public class Character {
 
   public Character(String name) {
     this.name = name;
-    charIcon = loadImage("arrow.png");
+    charIcon = loadImage("up_idle.png");
     x = y = 200.0f;
     moving = false;
     angle = 0;
     speed = 4.0f;
+    frameRate(24);
+    up = new Animation("up/up",10);
   }
 
   public float getX() {
@@ -55,7 +58,8 @@ public class Character {
     int length = 600;
     switch((int)angle) {
     case 0:
-      setImage("arrow4.png");
+      setImage("blank.png");
+      up.display(x,y);
       if (y>0)
         y = y-speed;
       break;
