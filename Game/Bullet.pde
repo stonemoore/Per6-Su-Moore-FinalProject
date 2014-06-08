@@ -31,7 +31,7 @@ public class Bullet {
 
   public void checkCollision(ArrayList<Monster> list) {
     for (Monster monster : list) {
-      if ((samePlace(getX(), monster.getX(), 50)) && ((samePlace(getY(), monster.getY(), 50))) && alive == true) {
+      if ((samePlace(getX(), monster.getX(), 50)) && ((samePlace(getY(), monster.getY(), 50))) && alive == true && !(monster.isDead())) {
         monster.minusHP(power);
         Icon = loadImage("blank.png");
         alive = false;
