@@ -1,28 +1,35 @@
 public class Bullet {
-  private PImage bulletIcon;
+  private PImage Icon;
   private double angle;
   private int power;
   private float x, y, speed;
+  private boolean alive;
 
   public Bullet(double angle, float x, float y) {
     this.angle = angle;
-    bulletIcon = loadImage("Bullet.png");
+    Icon = loadImage("Bullet.png");
     this.x = x;
     this.y = y;
     speed = power = 10;
+    alive = true;
   }
 
   public PImage getIcon() {
-    return bulletIcon;
+    return Icon;
+  }
+
+  public Boolean getAlive() {
+    return alive;
   }
 
   public void checkCollision(ArrayList<Monster> list) {
     for (Monster monster : list) {
-      if ((samePlace(getX(),monster.getX(),100)) && ((samePlace(getY(),monster.getY(),100))))
+      if ((samePlace(getX(), monster.getX(), 100)) && ((samePlace(getY(), monster.getY(), 100)))) {
         monster.minusHP(power);
-       // this = null;
+        alive = false;
       }
     }
+  }
 
   public boolean samePlace(float bulletValue, float monsterValue, int tolerance) {
     return tolerance > (Math.abs(bulletValue - monsterValue));

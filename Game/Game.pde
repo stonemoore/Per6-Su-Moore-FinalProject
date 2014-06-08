@@ -1,7 +1,7 @@
 //fillinmaplater
 PImage map;
 Character hero;
-Bullet test;
+Monster test;
 ArrayList<Bullet> bullets;
 
 
@@ -9,13 +9,17 @@ ArrayList<Bullet> bullets;
 void setup() {
   size(800, 600);
   hero = new Character("Character");
-  test = new Bullet(0, 400, 300);
   bullets = new ArrayList<Bullet>();
+  test = new Monster(20,20,3);
 }
 
 void draw() {
   background(0); 
   image(hero.getIcon(), hero.getX(), hero.getY());//coordinates are floats.
+  image(test.getIcon(), test.getX(), test.getY());
+  test.path(hero);
+  test.move();
+  
   if (hero.getMoving())
     hero.move();
   for (Bullet bullet : bullets) { //BULLETSTREAMOVEMENT
@@ -69,6 +73,8 @@ void keyReleased() {
   }
 }
 
+
+
 /*void mousePressed() {
  if(hero.getAngle() == 0.0)
  Bullet b = new Bullet(0, hero.getX(), hero.getY());
@@ -79,6 +85,5 @@ void keyReleased() {
  if(hero.getAngle() == 270.0)
  Bullet b = new Bullet(270, hero.getX(), hero.getY());
  }*/
-
 
 
