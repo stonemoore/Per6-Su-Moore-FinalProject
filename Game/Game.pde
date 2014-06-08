@@ -28,6 +28,9 @@ void draw() {
     image(monster.getIcon(), monster.getX(), monster.getY());
     monster.path(hero);
     monster.move();
+    if(monster.isDead()){
+      monster.setDead(); 
+    }
   }
   GarbageCleanUp.BulletCleanUp(bullets);
 }

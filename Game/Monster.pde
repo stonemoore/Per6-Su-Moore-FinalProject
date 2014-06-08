@@ -18,6 +18,14 @@ public class Monster {
   public float getX() {
     return x;
   }
+  
+  public void setDead(){
+    Icon = loadImage("blank.png");
+  }
+  
+  public boolean isDead(){
+     return HP<=0;
+  }
 
   public void setAngle(double angle) {
     this.angle = angle;
