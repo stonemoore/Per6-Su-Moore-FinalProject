@@ -3,7 +3,7 @@ public class Character {
   private PImage charIcon;
   private double power, angle;
   private float x, y, speed;//floats because they dont take doubles for the paitning for images at x,y.
-  public int ammo,hp;
+  public int ammo, hp;
   private String name;
   private boolean moving;
 
@@ -13,7 +13,7 @@ public class Character {
     x = y = 200.0f;
     moving = false;
     angle = 0;
-    speed = 4.0f;
+    speed = 8.0f;
     frameRate(24);
     up = new Animation("up/up", 18);
     right = new Animation("right/right", 18);
@@ -49,8 +49,8 @@ public class Character {
     this.angle = angle;
   }
 
-  public void addHP(int a){
-    hp += a; 
+  public void addHP(int a) {
+    hp += a;
   }
   public PImage getImage() {
     return charIcon;
@@ -61,14 +61,20 @@ public class Character {
   }
 
   public void shoot(ArrayList<Bullet> list) {
-    if (angle == 0)
+    switch((int)angle) {
+    case 0:
       list.add(new Bullet(getAngle(), getX()+3, getY()-15));
-    else if (angle == 90)
+      break;
+    case 90:
       list.add(new Bullet(getAngle(), getX()+10, getY()+15));
-    else if (angle == 180)
+      break;
+    case 180:
       list.add(new Bullet(getAngle(), getX()+3, getY()+30));
-    else
+      break;
+    case 270:
       list.add(new Bullet(getAngle(), getX()-10, getY()+15));
+      break;
+    }
   }
 
   public void checkDrops(ArrayList<PowerUp> list) {

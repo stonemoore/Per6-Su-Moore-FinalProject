@@ -3,31 +3,33 @@ PImage map;
 Character hero;
 Monster test;
 ArrayList<Bullet> bullets;
-
-
+ArrayList<Monster> monsters;
 
 void setup() {
   size(800, 600);
   hero = new Character("Character");
   bullets = new ArrayList<Bullet>();
-  test = new Monster(20,20,3);
+  monsters = new ArrayList<Monster>();
+  monsters.add(new Monster(20, 20, 3));
 }
 
 void draw() {
   background(0); 
   image(hero.getIcon(), hero.getX(), hero.getY());//coordinates are floats.
-  //####
-  image(test.getIcon(), test.getX(), test.getY());
-  test.path(hero);
-  test.move();
-  //##TEST
-  
+
   if (hero.getMoving())
     hero.move();
   for (Bullet bullet : bullets) { //BULLETSTREAMOVEMENT
     image(bullet.getIcon(), bullet.getX(), bullet.getY());
     bullet.move();
+    bullet.checkCollision(monsters);
   }
+  for (Monster monster : monsters) {
+    image(monster.getIcon(), monster.getX(), monster.getY());
+    monster.path(hero);
+    monster.move();
+  }
+  GarbageCleanUp.BulletCleanUp(bullets);
 }
 
 void keyPressed() {
@@ -74,6 +76,4 @@ void keyReleased() {
     break;
   }
 }
-
-
 
