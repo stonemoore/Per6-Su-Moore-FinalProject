@@ -15,7 +15,7 @@ void setup() {
 
 void draw() {
   background(0); 
-  image(cleanSprite(hero), hero.getX(), hero.getY());//coordinates are floats.
+  image(hero.getIcon(), hero.getX(), hero.getY());//coordinates are floats.
   if (hero.getMoving())
     hero.move();
   for (Bullet bullet : bullets) { //BULLETSTREAMOVEMENT
@@ -79,8 +79,6 @@ void keyReleased() {
  if(hero.getAngle() == 270.0)
  Bullet b = new Bullet(270, hero.getX(), hero.getY());
  }*/
-
-
 
 
 

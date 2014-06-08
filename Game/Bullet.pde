@@ -1,6 +1,7 @@
 public class Bullet {
   private PImage bulletIcon;
   private double angle;
+  private int power;
   private float x, y, speed;
 
   public Bullet(double angle, float x, float y) {
@@ -8,11 +9,23 @@ public class Bullet {
     bulletIcon = loadImage("Bullet.png");
     this.x = x;
     this.y = y;
-    speed = 10;
+    speed = power = 10;
   }
 
   public PImage getIcon() {
     return bulletIcon;
+  }
+
+  public void checkCollision(ArrayList<Monster> list) {
+    for (Monster monster : list) {
+      if ((samePlace(getX(),monster.getX(),100)) && ((samePlace(getY(),monster.getY(),100))))
+        monster.minusHP(power);
+       // this = null;
+      }
+    }
+
+  public boolean samePlace(float bulletValue, float monsterValue, int tolerance) {
+    return tolerance > (Math.abs(bulletValue - monsterValue));
   }
 
   public float getX() {

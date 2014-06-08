@@ -3,6 +3,7 @@ public class Character {
   private PImage charIcon;
   private double power, angle;
   private float x, y, speed;//floats because they dont take doubles for the paitning for images at x,y.
+  public int ammo;
   private String name;
   private boolean moving;
 
@@ -22,6 +23,10 @@ public class Character {
 
   public float getX() {
     return x;
+  }
+  
+  public PImage getIcon(){
+    return charIcon; 
   }
 
   public float getY() {
@@ -59,27 +64,24 @@ public class Character {
   public void move() {
     int width = 800;
     int length = 600;
+    setImage("blank.png");
     switch((int)angle) {
-    case 0:
-      setImage("blank.png");
+    case 0: 
       up.display(x,y);
       if (y>0)
         y = y-speed;
       break;
     case 90:
-      setImage("blank.png");
       right.display(x,y);
       if (x<width-100)//-100 accounts for image size
         x = x+speed;
       break;
     case 180:
-      setImage("blank.png");
       down.display(x,y);
       if (y<length-100)
         y = y+speed;
       break;
     case 270:
-      setImage("blank.png");
       left.display(x,y);
       if (x>0)
         x = x-speed;
