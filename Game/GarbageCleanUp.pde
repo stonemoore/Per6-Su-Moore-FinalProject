@@ -11,5 +11,6 @@ public static class GarbageCleanUp {
         powerUp = null;
     }
   }
+  
 }
 

@@ -1,7 +1,7 @@
 public class PowerUp {
   private PImage icon;
   private float x, y;
-  private String type;
+
   private boolean alive;
 
   public PowerUp(float x, float y, String filename) {
@@ -11,12 +11,24 @@ public class PowerUp {
     alive = true;
   }
   
-  public void setType(String type){
-    this.type = type;
+  public void givePlayer(Character hero){
+    //skeleton
   }
   
   public boolean getAlive(){
     return alive; 
+  }
+  
+  public float getX(){
+    return x; 
+  }
+  
+  public float getY(){
+    return y; 
+  }
+  
+  public void setAlive(boolean alive){
+    this.alive = alive; 
   }
   
 }

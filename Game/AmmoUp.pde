@@ -3,12 +3,12 @@ public class AmmoUp extends PowerUp {
   //weapon loadup
   public AmmoUp(float x, float y, int ammoGained, String filename) {
     super(x, y, "ammo.png");
-    setType("ammo");
     ammo = ammoGained;
   }
 
-  public int getAmmo() {
-    return ammo;
+  public void givePlayer(Character hero){
+     //hero.addAmmo(ammo);
   }
+
 }
 

@@ -16,9 +16,11 @@ void setup() {
 void draw() {
   background(0); 
   image(hero.getIcon(), hero.getX(), hero.getY());//coordinates are floats.
+  //####
   image(test.getIcon(), test.getX(), test.getY());
   test.path(hero);
   test.move();
+  //##TEST
   
   if (hero.getMoving())
     hero.move();
