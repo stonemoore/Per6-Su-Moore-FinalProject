@@ -7,17 +7,28 @@ public class Bullet {
 
   public Bullet(double angle, float x, float y) {
     this.angle = angle;
-    if (angle == 0)
-        Icon = loadImage("Bullet_up.png");
-    else if (angle == 90)
-        Icon = loadImage("Bullet_right.png");
-    else if (angle == 180)
-        Icon = loadImage("Bullet_down.png");
-    else
-        Icon = loadImage("Bullet_left.png");
+    if (hero.getCurrent().getFile() == "Trap")
+      Icon = loadImage("Trap.png");
+    else{
+      switch((int) angle) {
+        case 0:
+          Icon = loadImage(hero.getCurrent().getFile()+"_up.png");
+          break;
+        case 90:
+          Icon = loadImage(hero.getCurrent().getFile()+"_right.png");
+          break;
+        case 180:
+          Icon = loadImage(hero.getCurrent().getFile()+"_down.png");
+          break;
+        case 270:
+          Icon = loadImage(hero.getCurrent().getFile()+"_left.png");
+          break;
+      }
+    }   
     this.x = x;
     this.y = y;
-    speed = power = 10;
+    speed = hero.getCurrent().getSpeed();
+    power = hero.getCurrent().getPower();
     alive = true;
   }
 

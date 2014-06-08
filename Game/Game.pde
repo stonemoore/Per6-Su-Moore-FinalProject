@@ -56,6 +56,12 @@ void keyPressed() {
   case 'j':
     hero.shoot(bullets);
     break;
+  case 'q':
+    hero.setCurrent(hero.getCurrent().getLeft());
+    break;
+  case 'e':
+    hero.setCurrent(hero.getCurrent().getRight());
+    break;
   }
 }
 

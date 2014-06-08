@@ -6,6 +6,7 @@ public class Character {
   public int ammo, hp;
   private String name;
   private boolean moving;
+  private Weapon gun, rocket, trap, current;
 
   public Character(String name) {
     this.name = name;
@@ -19,6 +20,33 @@ public class Character {
     right = new Animation("right/right", 18);
     down = new Animation("down/down", 18);
     left = new Animation("left/left", 18);
+    gun = new Weapon(1,100,"Bullet",20);
+    rocket = new Weapon(10,5,"Rocket",5);
+    trap = new Weapon(5,5,"Trap",0);
+    gun.setLeft(trap);
+    gun.setRight(rocket);
+    rocket.setLeft(gun);
+    rocket.setRight(trap);
+    trap.setLeft(rocket);
+    trap.setRight(gun);
+    current = gun;
+  }
+
+  public Weapon getCurrent(){
+    return current; 
+  }
+  
+  public void setCurrent(Weapon w){
+     current = w; 
+  }
+  
+  public int currentID(){
+    if (current == gun)
+      return 0;
+    else if (current == rocket)
+      return 1;
+    else
+      return 2;
   }
 
   public float getX() {
@@ -61,20 +89,20 @@ public class Character {
   }
 
   public void shoot(ArrayList<Bullet> list) {
-    switch((int)angle) {
-    case 0:
-      list.add(new Bullet(getAngle(), getX()+3, getY()-15));
-      break;
-    case 90:
-      list.add(new Bullet(getAngle(), getX()+10, getY()+15));
-      break;
-    case 180:
-      list.add(new Bullet(getAngle(), getX()+3, getY()+30));
-      break;
-    case 270:
-      list.add(new Bullet(getAngle(), getX()-10, getY()+15));
-      break;
-    }
+        switch((int)angle) {
+          case 0:
+            list.add(new Bullet(getAngle(), getX()+3, getY()-15));
+            break;
+          case 90:
+            list.add(new Bullet(getAngle(), getX()+20, getY()+15));
+            break;
+          case 180:
+            list.add(new Bullet(getAngle(), getX()+3, getY()+30));
+            break;
+          case 270:
+            list.add(new Bullet(getAngle(), getX()-10, getY()+15));
+            break;
+        }
   }
 
   public void checkDrops(ArrayList<PowerUp> list) {
