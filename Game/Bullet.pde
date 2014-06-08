@@ -7,7 +7,14 @@ public class Bullet {
 
   public Bullet(double angle, float x, float y) {
     this.angle = angle;
-    Icon = loadImage("Bullet.png");
+    if (angle == 0)
+        Icon = loadImage("Bullet_up.png");
+    else if (angle == 90)
+        Icon = loadImage("Bullet_right.png");
+    else if (angle == 180)
+        Icon = loadImage("Bullet_down.png");
+    else
+        Icon = loadImage("Bullet_left.png");
     this.x = x;
     this.y = y;
     speed = power = 10;

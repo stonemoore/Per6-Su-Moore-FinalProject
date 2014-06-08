@@ -48,7 +48,7 @@ void keyPressed() {
     hero.setAngleTurned(90);
     hero.setMoving(true);   
     break;
-  case 'z':
+  case 'j':
     hero.shoot(bullets);
     break;
   }
@@ -75,17 +75,5 @@ void keyReleased() {
   }
 }
 
-
-
-/*void mousePressed() {
- if(hero.getAngle() == 0.0)
- Bullet b = new Bullet(0, hero.getX(), hero.getY());
- if(hero.getAngle() == 90.0)
- Bullet b = new Bullet(90, hero.getX(), hero.getY());
- if(hero.getAngle() == 180.0)
- Bullet b = new Bullet(180, hero.getX(), hero.getY());
- if(hero.getAngle() == 270.0)
- Bullet b = new Bullet(270, hero.getX(), hero.getY());
- }*/
 
 

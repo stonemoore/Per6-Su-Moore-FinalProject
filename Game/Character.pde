@@ -61,7 +61,14 @@ public class Character {
   }
 
   public void shoot(ArrayList<Bullet> list) {
-    list.add(new Bullet(getAngle(), getX(), getY()));
+    if (angle == 0)
+      list.add(new Bullet(getAngle(), getX()+3, getY()-15));
+    else if (angle == 90)
+      list.add(new Bullet(getAngle(), getX()+10, getY()+15));
+    else if (angle == 180)
+      list.add(new Bullet(getAngle(), getX()+3, getY()+30));
+    else
+      list.add(new Bullet(getAngle(), getX()-10, getY()+15));
   }
 
   public void checkDrops(ArrayList<PowerUp> list) {
