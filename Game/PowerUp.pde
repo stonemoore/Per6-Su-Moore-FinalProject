@@ -27,8 +27,14 @@ public class PowerUp {
     return y; 
   }
   
+  public PImage getIcon(){
+    return icon; 
+  }
   public void setAlive(boolean alive){
     this.alive = alive; 
+    if(alive == false){
+      icon = loadImage("blank.png"); 
+    }
   }
   
 }

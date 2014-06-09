@@ -10,6 +10,7 @@ public class Character {
 
   public Character(String name) {
     this.name = name;
+    hp = ammo = 100;
     charIcon = loadImage("hero/up_idle.png");
     x = y = 200.0f;
     moving = false;
@@ -20,9 +21,9 @@ public class Character {
     right = new Animation("hero/right/right", 18);
     down = new Animation("hero/down/down", 18);
     left = new Animation("hero/left/left", 18);
-    gun = new Weapon(1,100,"Bullet",20);
-    rocket = new Weapon(10,5,"Rocket",5);
-    trap = new Weapon(5,5,"Trap",0);
+    gun = new Weapon(1, 100, "Bullet", 20);
+    rocket = new Weapon(10, 5, "Rocket", 5);
+    trap = new Weapon(5, 5, "Trap", 0);
     gun.setLeft(trap);
     gun.setRight(rocket);
     rocket.setLeft(gun);
@@ -32,15 +33,15 @@ public class Character {
     current = gun;
   }
 
-  public Weapon getCurrent(){
-    return current; 
+  public Weapon getCurrent() {
+    return current;
   }
-  
-  public void setCurrent(Weapon w){
-     current = w; 
+
+  public void setCurrent(Weapon w) {
+    current = w;
   }
-  
-  public int currentID(){
+
+  public int currentID() {
     if (current == gun)
       return 0;
     else if (current == rocket)
@@ -80,9 +81,9 @@ public class Character {
   public void addHP(int a) {
     hp += a;
   }
-  
-  public int getHP(){
-    return hp; 
+
+  public int getHP() {
+    return hp;
   }
   public PImage getImage() {
     return charIcon;
@@ -92,27 +93,38 @@ public class Character {
     charIcon = loadImage(s);
   }
 
+  public int getAmmo() {
+    return ammo;
+  }
+  
+  public void setAmmo(int ammo) {
+    this.ammo = ammo;
+  }
+  
+  public void addAmmo(int a) {
+    ammo += a; 
+  }
   public void shoot(ArrayList<Bullet> list) {
-        switch((int)angle) {
-          case 0:
-            list.add(new Bullet(getAngle(), getX()+3, getY()-15));
-            break;
-          case 90:
-            list.add(new Bullet(getAngle(), getX()+20, getY()+15));
-            break;
-          case 180:
-            list.add(new Bullet(getAngle(), getX()+3, getY()+30));
-            break;
-          case 270:
-            list.add(new Bullet(getAngle(), getX()-10, getY()+15));
-            break;
-        }
+    switch((int)angle) {
+    case 0:
+      list.add(new Bullet(getAngle(), getX()+3, getY()-15));
+      break;
+    case 90:
+      list.add(new Bullet(getAngle(), getX()+20, getY()+15));
+      break;
+    case 180:
+      list.add(new Bullet(getAngle(), getX()+3, getY()+30));
+      break;
+    case 270:
+      list.add(new Bullet(getAngle(), getX()-10, getY()+15));
+      break;
+    }
   }
 
   public void checkDrops(ArrayList<PowerUp> list) {
     for (PowerUp powerup : list) {
       if (samePlace(getX(), powerup.getX(), 100) &&
-        samePlace(getY(), powerup.getY(), 100)) {
+        samePlace(getY(), powerup.getY(), 100) && powerup.getAlive()) {
         powerup.givePlayer(this);
         powerup.setAlive(false);
       }

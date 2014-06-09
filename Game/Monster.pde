@@ -37,6 +37,7 @@ public class Monster {
   public void setCounted(boolean counted){
     this.counted = counted; 
   }
+  
   public boolean isDead(){
      return HP<=0;
   }
