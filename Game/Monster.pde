@@ -14,7 +14,7 @@ public class Monster {
     left = new Animation("enemy1/left/left",42);
     right = new Animation("enemy1/right/right",42);
     up = new Animation("enemy1/up/up",42);
-    power = 50;
+    power = 1;
     angle  = 0;
     this.x = x;
     this.y = y;
@@ -62,6 +62,9 @@ public class Monster {
     return HP;
   }
   
+  public void attack(Character hero){
+    hero.setHP(hero.getHP() - power);
+  }
 //  public PImage getIcon(){
 //    return Icon; 
 //  }
@@ -103,6 +106,8 @@ public class Monster {
         setAngle(270); 
       }
     }
+    if(Math.abs(Xdist) < 50 && Math.abs(Ydist) <50)
+      attack(target);
   }
 
 public void move() {

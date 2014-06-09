@@ -104,6 +104,10 @@ public class Character {
   public void addAmmo(int a) {
     ammo += a; 
   }
+  
+  public void setHP(int hp){
+    this.hp = hp; 
+  }
   public void shoot(ArrayList<Bullet> list) {
     switch((int)angle) {
     case 0:
