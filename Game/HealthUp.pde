@@ -9,6 +9,8 @@ public class HealthUp extends PowerUp {
     if (hero.getHP()<80) {
       hero.addHP(hp);
     }
+    else
+      hero.setHP(100);
   }
 }
 

@@ -111,8 +111,8 @@ public class Character {
   
   public void addAmmo(int a) {
     gun.addAmmo(a);
-    rocket.addAmmo(a/4); 
-    trap.addAmmo(a/2);
+    rocket.addAmmo(a/3); 
+    trap.addAmmo(a/6);
   }
   
   public void setHP(int hp){
