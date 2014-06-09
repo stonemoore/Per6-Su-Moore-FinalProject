@@ -20,6 +20,22 @@ public class Weapon{
     return speed; 
   }
   
+  public void useAmmo(){
+    ammo = ammo - 1;
+  }
+  
+  public void setAmmo(int a){
+    ammo = a;
+  }
+  
+  public int getAmmo(){
+     return ammo; 
+  }
+  
+  public void addAmmo(int n){
+     ammo += n;
+  }
+  
   public int getPower(){
     return power; 
   }

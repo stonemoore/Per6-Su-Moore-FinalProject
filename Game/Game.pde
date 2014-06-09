@@ -66,8 +66,10 @@ void draw() {
   }
 
   text("Character HP: " + hero.getHP(), 800, 100);
-  text("Ammo left: " + hero.getAmmo(), 800, 150);
-  text("Monsters slain: " + amountSlain, 800, 200);
+  text("Bullets left: " + hero.getAmmo(0), 800, 150);
+  text("Rockets left: " + hero.getAmmo(1), 800, 175);
+  text("Traps left: " + hero.getAmmo(2), 800, 200);
+  text("Monsters slain: " + amountSlain, 800, 250);
 }
 
 void keyPressed() {
@@ -89,9 +91,9 @@ void keyPressed() {
     hero.setMoving(true);   
     break;
   case 'j':
-    if (hero.getAmmo()>0) {
+    if (hero.getAmmo(hero.currentID())>0) {
       hero.shoot(bullets);
-      hero.setAmmo(hero.getAmmo()-1);
+      //hero.setAmmo(hero.getAmmo()-1);
     }
     break;
   case 'q':

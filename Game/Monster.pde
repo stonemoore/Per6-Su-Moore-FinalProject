@@ -63,7 +63,8 @@ public class Monster {
   }
   
   public void attack(Character hero){
-    hero.setHP(hero.getHP() - power);
+    if(!isDead())
+      hero.setHP(hero.getHP() - power);
   }
 //  public PImage getIcon(){
 //    return Icon; 

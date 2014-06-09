@@ -93,8 +93,16 @@ public class Character {
     charIcon = loadImage(s);
   }
 
-  public int getAmmo() {
-    return ammo;
+  public int getAmmo(int n) {
+    switch(n){
+      case 0:
+        return gun.getAmmo();
+      case 1:
+        return rocket.getAmmo();
+      case 2:
+        return trap.getAmmo();
+    }
+    return -1;
   }
   
   public void setAmmo(int ammo) {
@@ -102,13 +110,16 @@ public class Character {
   }
   
   public void addAmmo(int a) {
-    ammo += a; 
+    gun.addAmmo(a);
+    rocket.addAmmo(a/4); 
+    trap.addAmmo(a/2);
   }
   
   public void setHP(int hp){
     this.hp = hp; 
   }
   public void shoot(ArrayList<Bullet> list) {
+    current.useAmmo();
     switch((int)angle) {
     case 0:
       list.add(new Bullet(getAngle(), getX()+3, getY()-15));
