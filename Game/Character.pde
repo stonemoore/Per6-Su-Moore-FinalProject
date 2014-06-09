@@ -21,9 +21,9 @@ public class Character {
     right = new Animation("hero/right/right", 18);
     down = new Animation("hero/down/down", 18);
     left = new Animation("hero/left/left", 18);
-    gun = new Weapon(1, 100, "Bullet", 20);
-    rocket = new Weapon(10, 5, "Rocket", 5);
-    trap = new Weapon(5, 5, "Trap", 0);
+    gun = new Weapon(2, 100, "Bullet", 20);
+    rocket = new Weapon(10, 20, "Rocket", 5);
+    trap = new Weapon(20, 5, "Trap", 0);
     gun.setLeft(trap);
     gun.setRight(rocket);
     rocket.setLeft(gun);

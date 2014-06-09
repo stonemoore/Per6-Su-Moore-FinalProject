@@ -9,7 +9,7 @@ public class Monster {
 
   public Monster(int x, int y, int speed) {
 //    Icon = loadImage("blank.png");
-    HP = 100;
+    HP = 60;
     down = new Animation("enemy1/down/down",42);
     left = new Animation("enemy1/left/left",42);
     right = new Animation("enemy1/right/right",42);
