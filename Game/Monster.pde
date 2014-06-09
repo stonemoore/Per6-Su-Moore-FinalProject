@@ -96,30 +96,33 @@ public class Monster {
   }
 
 public void move() {
-  int width = 800;
-  int length = 600;
-  //setImage("blank.png");
-  switch((int)angle) {
-  case 0: 
-    up.display(x,y);
-    if (y>0)
-      y -= speed;
-    break;
-  case 90:
-    right.display(x,y);
-    if (x<width-100)//-100 accounts for image size
-      x += speed;
-    break;
-  case 180:
-    down.display(x,y);
-    if (y<length-100)
-      y += speed;
-    break;
-  case 270:
-    left.display(x,y);
-    if (x>0)
-      x -= speed;
-    break;
+  if(!isDead()){
+    int width = 800;
+    int length = 600;
+    //setImage("blank.png");
+    switch((int)angle) {
+    case 0: 
+      up.display(x,y);
+      if (y>0)
+        y -= speed;
+      break;
+    case 90:
+      right.display(x,y);
+      if (x<width-100)//-100 accounts for image size
+        x += speed;
+      break;
+    case 180:
+      down.display(x,y);
+      if (y<length-100)
+        y += speed;
+      break;
+    case 270:
+      left.display(x,y);
+      if (x>0)
+        x -= speed;
+      break;  
+    }
   }
 }
+
 }
