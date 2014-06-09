@@ -33,8 +33,8 @@ void draw() {
   hero.checkDrops(powerups);
   if (hero.getMoving())
     hero.move();
-  if (hero.getHP() < 0) {
-    text("GAME OVER", 400, 400);
+  if (hero.getHP() < 0){
+      System.exit(0); 
   }
   for (Bullet bullet : bullets) { //BULLETSTREAMOVEMENT
     image(bullet.getIcon(), bullet.getX(), bullet.getY());
