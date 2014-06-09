@@ -1,11 +1,11 @@
 public class Character {
-  private Animation up, down, left, right;
+  private Animation up, down, left, right, Acurrent;
   private PImage charIcon;
   private double power, angle;
   private float x, y, speed;//floats because they dont take doubles for the paitning for images at x,y.
   public int ammo, hp;
   private String name;
-  private boolean moving;
+  private boolean moving, strafing;
   private Weapon gun, rocket, trap, current;
 
   public Character(String name) {
@@ -31,6 +31,7 @@ public class Character {
     trap.setLeft(rocket);
     trap.setRight(gun);
     current = gun;
+    Acurrent = up;
   }
 
   public Weapon getCurrent() {
@@ -66,12 +67,20 @@ public class Character {
     return angle;
   }
 
+  public void toggleStrafing(){
+    strafing = !strafing; 
+  }
+
   public void setMoving(boolean moving) {
     this.moving = moving;
   }
 
   public boolean getMoving() {
     return moving;
+  }
+
+  public boolean getStrafing(){
+     return strafing; 
   }
 
   public void setAngleTurned(double angle) {
@@ -118,28 +127,22 @@ public class Character {
   public void setHP(int hp){
     this.hp = hp; 
   }
+  
   public void shoot(ArrayList<Bullet> list) {
     current.useAmmo();
-    switch((int)angle) {
-    case 0:
-      list.add(new Bullet(getAngle(), getX()+3, getY()-15));
-      break;
-    case 90:
-      list.add(new Bullet(getAngle(), getX()+20, getY()+15));
-      break;
-    case 180:
-      list.add(new Bullet(getAngle(), getX()+3, getY()+30));
-      break;
-    case 270:
-      list.add(new Bullet(getAngle(), getX()-10, getY()+15));
-      break;
-    }
+    if(Acurrent == up)
+      list.add(new Bullet(0, getX()+3, getY()-15));
+    else if(Acurrent == right)
+      list.add(new Bullet(90, getX()+20, getY()+15));
+    else if(Acurrent == down)
+      list.add(new Bullet(180, getX()+3, getY()+30));
+    else if(Acurrent == left)
+      list.add(new Bullet(270, getX()-10, getY()+15));
   }
 
   public void checkDrops(ArrayList<PowerUp> list) {
     for (PowerUp powerup : list) {
-      if (samePlace(getX(), powerup.getX(), 100) &&
-        samePlace(getY(), powerup.getY(), 100) && powerup.getAlive()) {
+      if (samePlace(getX(), powerup.getX(), 20) && samePlace(getY(), powerup.getY(), 20) && powerup.getAlive()) {
         powerup.givePlayer(this);
         powerup.setAlive(false);
       }
@@ -150,29 +153,38 @@ public class Character {
     return tolerance > (Math.abs(playerVal - monsterVal));
   }
 
+  
 
   public void move() {
     int width = 800;
     int length = 600;
     setImage("blank.png");
     switch((int)angle) {
-    case 0: 
-      up.display(x, y);
+    case 0:
+      if(!strafing)
+        Acurrent = up;
+      Acurrent.display(x, y);
       if (y>0)
         y -= speed;
       break;
     case 90:
-      right.display(x, y);
+      if(!strafing)
+        Acurrent = right;
+      Acurrent.display(x, y);
       if (x<width-100)//-100 accounts for image size
         x += speed;
       break;
     case 180:
-      down.display(x, y);
+      if(!strafing)
+        Acurrent = down;
+      Acurrent.display(x, y);
       if (y<length-100)
         y += speed;
       break;
     case 270:
-      left.display(x, y);
+      if(!strafing)
+        Acurrent = left;
+      Acurrent.display(x, y);
       if (x>0)
         x -= speed;
       break;

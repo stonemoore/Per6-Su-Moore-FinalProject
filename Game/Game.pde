@@ -7,8 +7,9 @@ int amountSlain;
 ArrayList<Bullet> bullets;
 ArrayList<Monster> monsters;
 ArrayList<PowerUp> powerups;
-Animation explosion;
-Random r; 
+Animation explosion, mup, mdown, mleft, mright;
+Random r;
+String Icurrent = "hero/up_idle.png";
 
 
 void setup() {
@@ -23,6 +24,10 @@ void setup() {
   powerups.add(new AmmoUp(400, 400, 20));
   explosion = new Animation("explosion/explosion",28);
   r = new Random();
+  mdown = new Animation("enemy1/down/down",42);
+  mleft = new Animation("enemy1/left/left",42);
+  mright = new Animation("enemy1/right/right",42);
+  mup = new Animation("enemy1/up/up",42);
 }
 
 void draw() {
@@ -50,7 +55,7 @@ void draw() {
     if (monster.isDead()&&!(monster.getCounted())) {
       monster.setCounted(true); 
       amountSlain++;
-      if (Math.random()<.9) {
+      if (Math.random()<.6) {
         if (Math.random()<.5) {
           powerups.add(new AmmoUp(monster.getX(), monster.getY(), 20));
         } else {
@@ -121,20 +126,30 @@ void keyReleased() {
   switch(key) {
   case 's':
     hero.setMoving(false);
-    hero.setImage("hero/down_idle.png");
+    if (!hero.getStrafing())
+      Icurrent = "hero/down_idle.png";
+    hero.setImage(Icurrent);
     break;
   case 'w':
     hero.setMoving(false);
-    hero.setImage("hero/up_idle.png");
+    if (!hero.getStrafing())
+      Icurrent = "hero/up_idle.png";
+    hero.setImage(Icurrent);
     break;
   case 'a':
     hero.setMoving(false);
-    hero.setImage("hero/left_idle.png");
+    if (!hero.getStrafing())
+      Icurrent = "hero/left_idle.png";
+    hero.setImage(Icurrent);
     break;
   case 'd':
     hero.setMoving(false); 
-    hero.setImage("hero/right_idle.png");    
+    if (!hero.getStrafing())
+      Icurrent = "hero/right_idle.png";
+    hero.setImage(Icurrent);   
     break;
   }
+  if (key == CODED && keyCode == SHIFT)
+     hero.toggleStrafing();
 }
 

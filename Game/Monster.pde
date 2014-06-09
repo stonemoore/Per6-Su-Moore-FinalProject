@@ -1,6 +1,5 @@
 public class Monster {
 //  private PImage Icon;
-  private Animation up, down, left, right;
   private int HP, power;
   private double angle;
   private float x, y, speed;
@@ -9,11 +8,7 @@ public class Monster {
 
   public Monster(int x, int y, int speed) {
 //    Icon = loadImage("blank.png");
-    HP = 60;
-    down = new Animation("enemy1/down/down",42);
-    left = new Animation("enemy1/left/left",42);
-    right = new Animation("enemy1/right/right",42);
-    up = new Animation("enemy1/up/up",42);
+    HP = 60;    
     power = 1;
     angle  = 0;
     this.x = x;
@@ -118,22 +113,22 @@ public void move() {
     //setImage("blank.png");
     switch((int)angle) {
     case 0: 
-      up.display(x,y);
+      mup.display(x,y);
       if (y>0)
         y -= speed;
       break;
     case 90:
-      right.display(x,y);
+      mright.display(x,y);
       if (x<width-100)//-100 accounts for image size
         x += speed;
       break;
     case 180:
-      down.display(x,y);
+      mdown.display(x,y);
       if (y<length-100)
         y += speed;
       break;
     case 270:
-      left.display(x,y);
+      mleft.display(x,y);
       if (x>0)
         x -= speed;
       break;  
