@@ -80,6 +80,10 @@ public class Character {
   public void addHP(int a) {
     hp += a;
   }
+  
+  public int getHP(){
+    return hp; 
+  }
   public PImage getImage() {
     return charIcon;
   }

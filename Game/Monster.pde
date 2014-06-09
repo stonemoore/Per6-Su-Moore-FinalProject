@@ -4,6 +4,7 @@ public class Monster {
   private int HP, power;
   private double angle;
   private float x, y, speed;
+  private boolean counted;
   private boolean moving; //uncheck if stun
 
   public Monster(int x, int y, int speed) {
@@ -18,6 +19,7 @@ public class Monster {
     this.x = x;
     this.y = y;
     this.speed = speed;
+    counted = false;
   }
 
   public float getX() {
@@ -28,6 +30,13 @@ public class Monster {
 //    Icon = loadImage("blank.png");
   }
   
+  public boolean getCounted(){//workaround
+    return counted;
+  }
+  
+  public void setCounted(boolean counted){
+    this.counted = counted; 
+  }
   public boolean isDead(){
      return HP<=0;
   }

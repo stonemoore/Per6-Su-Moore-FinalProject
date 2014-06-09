@@ -1,23 +1,29 @@
 //fillinmaplater
 PImage map;
+PFont f;
 Character hero;
-Monster test;
+int amountSlain;
 ArrayList<Bullet> bullets;
 ArrayList<Monster> monsters;
+ArrayList<Integer> monstersToRemove;
+
 
 void setup() {
-  size(800, 600);
+  size(1000, 600);
+  f = createFont("Arial",32,true);
   map = loadImage("bg.png");
   hero = new Character("Character");
   bullets = new ArrayList<Bullet>();
   monsters = new ArrayList<Monster>();
+  monstersToRemove = new ArrayList<Integer>();
   monsters.add(new Monster(20, 20, 2));
 }
 
 void draw() {
-  background(map); 
+  background(map);
+  textFont(f,16);
+  fill(0);
   image(hero.getIcon(), hero.getX(), hero.getY());//coordinates are floats.
-
   if (hero.getMoving())
     hero.move();
   for (Bullet bullet : bullets) { //BULLETSTREAMOVEMENT
@@ -26,14 +32,18 @@ void draw() {
     bullet.checkCollision(monsters);
   }
   for (Monster monster : monsters) {
-//    image(monster.getIcon(), monster.getX(), monster.getY());
+    //image(monster.getIcon(), monster.getX(), monster.getY());
     monster.path(hero);
     monster.move();
-    if(monster.isDead()){
-      monster.setDead(); 
+    if(monster.isDead()&&!(monster.getCounted())){
+      monster.setDead();
+      monster.setCounted(true); 
+      amountSlain++;
     }
   }
-  GarbageCleanUp.BulletCleanUp(bullets);
+  text("Character HP: " + hero.getHP(),800,100);
+  text("Monsters slain: " + amountSlain,800,200);
+  
 }
 
 void keyPressed() {
