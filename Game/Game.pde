@@ -7,6 +7,7 @@ ArrayList<Monster> monsters;
 
 void setup() {
   size(800, 600);
+  map = loadImage("bg.png");
   hero = new Character("Character");
   bullets = new ArrayList<Bullet>();
   monsters = new ArrayList<Monster>();
@@ -14,7 +15,7 @@ void setup() {
 }
 
 void draw() {
-  background(0); 
+  background(map); 
   image(hero.getIcon(), hero.getX(), hero.getY());//coordinates are floats.
 
   if (hero.getMoving())
