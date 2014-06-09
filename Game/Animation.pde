@@ -1,23 +1,24 @@
-class Animation {
+public class Animation {
 
-  PImage[] images;
-  int imageCount;
-  int frame;
+  private PImage[] images;
+  private int imagecount;
+  private int frame;
 
-  Animation (String imagePrefix, int count) {
-    imageCount = count; //number of frames
-    images = new PImage[imageCount]; 
+  public Animation (String imageprefix, int c) {
+    imagecount = c; //number of frames
+    images = new PImage[imagecount]; 
 
-    for (int i = 0; i < imageCount; i++) {
-      String filename = imagePrefix + nf(i, 4) + ".gif"; //formats i to string for file reading
+    for (int i = 0; i < imagecount; i++) {
+      String filename = imageprefix + nf(i, 4) + ".gif"; //formats i to string for file reading
       images[i] = loadImage(filename);
     }
   }
 
-  void display(float xpos, float ypos) {
-    frame = (frame + 1) % imageCount; //loops around to beginning
+  public void display(float xpos, float ypos) {
+    frame = (frame + 1) % imagecount; //loops around to beginning
     image(images[frame], xpos, ypos);
   }
+  
 
 }
 

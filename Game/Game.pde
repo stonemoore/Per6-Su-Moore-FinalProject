@@ -7,6 +7,7 @@ int amountSlain;
 ArrayList<Bullet> bullets;
 ArrayList<Monster> monsters;
 ArrayList<PowerUp> powerups;
+Animation explosion;
 Random r; 
 
 
@@ -20,6 +21,7 @@ void setup() {
   powerups = new ArrayList<PowerUp>();
   monsters.add(new Monster(20, 20, 2));
   powerups.add(new AmmoUp(400, 400, 20));
+  explosion = new Animation("explosion/explosion",28);
   r = new Random();
 }
 
@@ -33,7 +35,7 @@ void draw() {
   hero.checkDrops(powerups);
   if (hero.getMoving())
     hero.move();
-  if (hero.getHP() < 0){
+  if (hero.getHP() <= 0){
       System.exit(0); 
   }
   for (Bullet bullet : bullets) { //BULLETSTREAMOVEMENT
@@ -65,11 +67,21 @@ void draw() {
     monsters.add(new Monster(r.nextInt(700), r.nextInt(550), 1));
   }
 
-  text("Character HP: " + hero.getHP(), 800, 100);
-  text("Bullets left: " + hero.getAmmo(0), 800, 150);
-  text("Rockets left: " + hero.getAmmo(1), 800, 175);
-  text("Traps left: " + hero.getAmmo(2), 800, 200);
-  text("Monsters slain: " + amountSlain, 800, 250);
+  text("Character HP: " + hero.getHP(), 805, 100);
+  text("Current Weapon: " + nameFix(hero.getCurrent().getFile()), 805, 150);
+  text("Bullets left: " + hero.getAmmo(0), 805, 175);
+  text("Rockets left: " + hero.getAmmo(1), 805, 200);
+  text("Bombs left: " + hero.getAmmo(2), 805, 225);
+  text("Monsters slain: " + amountSlain, 805, 275);
+}
+
+String nameFix(String s){
+  if(s == "Bullet")
+    return "Gun";
+  else if(s == "Trap")
+    return "Bomb";
+  else 
+    return s;
 }
 
 void keyPressed() {

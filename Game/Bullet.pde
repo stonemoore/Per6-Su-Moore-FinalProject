@@ -46,6 +46,8 @@ public class Bullet {
         monster.minusHP(power);
         Icon = loadImage("blank.png");
         alive = false;
+        if (hero.getCurrent().getFile() == "Trap")
+            explosion.display(x,y);
       }
     }
   }
