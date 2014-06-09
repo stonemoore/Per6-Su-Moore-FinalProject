@@ -1,13 +1,18 @@
 public class Monster {
-  private PImage Icon;
+//  private PImage Icon;
+  private Animation up, down, left, right;
   private int HP, power;
   private double angle;
   private float x, y, speed;
   private boolean moving; //uncheck if stun
 
   public Monster(int x, int y, int speed) {
-    Icon = loadImage("zerg.png");
+//    Icon = loadImage("blank.png");
     HP = 100;
+    down = new Animation("enemy1/down/down",42);
+    left = new Animation("enemy1/left/left",42);
+    right = new Animation("enemy1/right/right",42);
+    up = new Animation("enemy1/up/up",42);
     power = 50;
     angle  = 0;
     this.x = x;
@@ -20,7 +25,7 @@ public class Monster {
   }
   
   public void setDead(){
-    Icon = loadImage("blank.png");
+//    Icon = loadImage("blank.png");
   }
   
   public boolean isDead(){
@@ -47,9 +52,9 @@ public class Monster {
     return HP;
   }
   
-  public PImage getIcon(){
-    return Icon; 
-  }
+//  public PImage getIcon(){
+//    return Icon; 
+//  }
   /*
    0,0 - - - -
    |          |ASCII representation of x,y coordinates
@@ -96,22 +101,22 @@ public void move() {
   //setImage("blank.png");
   switch((int)angle) {
   case 0: 
-    //up.display(x,y);
+    up.display(x,y);
     if (y>0)
       y -= speed;
     break;
   case 90:
-    //right.display(x,y);
+    right.display(x,y);
     if (x<width-100)//-100 accounts for image size
       x += speed;
     break;
   case 180:
-    //down.display(x,y);
+    down.display(x,y);
     if (y<length-100)
       y += speed;
     break;
   case 270:
-    //left.display(x,y);
+    left.display(x,y);
     if (x>0)
       x -= speed;
     break;

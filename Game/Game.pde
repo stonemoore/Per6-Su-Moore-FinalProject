@@ -11,7 +11,7 @@ void setup() {
   hero = new Character("Character");
   bullets = new ArrayList<Bullet>();
   monsters = new ArrayList<Monster>();
-  monsters.add(new Monster(20, 20, 3));
+  monsters.add(new Monster(20, 20, 2));
 }
 
 void draw() {
@@ -26,7 +26,7 @@ void draw() {
     bullet.checkCollision(monsters);
   }
   for (Monster monster : monsters) {
-    image(monster.getIcon(), monster.getX(), monster.getY());
+//    image(monster.getIcon(), monster.getX(), monster.getY());
     monster.path(hero);
     monster.move();
     if(monster.isDead()){
@@ -70,19 +70,19 @@ void keyReleased() {
   switch(key) {
   case 's':
     hero.setMoving(false);
-    hero.setImage("down_idle.png");
+    hero.setImage("hero/down_idle.png");
     break;
   case 'w':
     hero.setMoving(false);
-    hero.setImage("up_idle.png");
+    hero.setImage("hero/up_idle.png");
     break;
   case 'a':
     hero.setMoving(false);
-    hero.setImage("left_idle.png");
+    hero.setImage("hero/left_idle.png");
     break;
   case 'd':
     hero.setMoving(false); 
-    hero.setImage("right_idle.png");    
+    hero.setImage("hero/right_idle.png");    
     break;
   }
 }

@@ -10,16 +10,16 @@ public class Character {
 
   public Character(String name) {
     this.name = name;
-    charIcon = loadImage("up_idle.png");
+    charIcon = loadImage("hero/up_idle.png");
     x = y = 200.0f;
     moving = false;
     angle = 0;
     speed = 8.0f;
     frameRate(24);
-    up = new Animation("up/up", 18);
-    right = new Animation("right/right", 18);
-    down = new Animation("down/down", 18);
-    left = new Animation("left/left", 18);
+    up = new Animation("hero/up/up", 18);
+    right = new Animation("hero/right/right", 18);
+    down = new Animation("hero/down/down", 18);
+    left = new Animation("hero/left/left", 18);
     gun = new Weapon(1,100,"Bullet",20);
     rocket = new Weapon(10,5,"Rocket",5);
     trap = new Weapon(5,5,"Trap",0);
